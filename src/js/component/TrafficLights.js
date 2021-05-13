@@ -2,25 +2,35 @@ import React from "react";
 import { useState } from "react";
 import "../../styles/index.scss";
 const TrafficLights = () => {
-	const [red, setRed] = useState("red ");
+	const [red, setRed] = useState("red");
 	const [orange, setOrange] = useState("orange");
 	const [green, setGreen] = useState("green");
 	return (
 		<div className="container-fluid">
+			<h1>TRAFFIC LIGHTS BY FRANC</h1>
 			<div className="top"></div>
 			<div className="container_traffic">
 				<div
-					className={red}
+					className={red === true ? "redShadow" : "red"}
 					onClick={() => {
-						setRed("redShadow");
-						setGreen(green);
+						setRed(!red);
+						setOrange(false);
+						setGreen(false);
 					}}></div>
 				<div
-					className={orange}
-					onClick={() => setOrange("orangeShadow")}></div>
+					className={orange === true ? "orangeShadow" : "orange"}
+					onClick={() => {
+						setRed(false);
+						setOrange(!orange);
+						setGreen(false);
+					}}></div>
 				<div
-					className={green}
-					onClick={() => setGreen("greenShadow")}></div>
+					className={green === true ? "greenShadow" : "green"}
+					onClick={() => {
+						setRed(false);
+						setOrange(false);
+						setGreen(!green);
+					}}></div>
 			</div>
 		</div>
 	);
